@@ -1,0 +1,16 @@
+{% extends "index.html"%}
+{% block head %}
+ <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+{% endblock %}
+{% block line_chart %}
+
+
+    
+    <div id="chart-div"></div>
+    <h2 style="text-align: center;">Min Value: {{a}}, Max Value: {{b}}, Average Value: {{c}}</h2>
+    <script>
+        // Load the Plotly chart using the chart JSON data
+        var chartData = {{ chart_json | safe }};
+        Plotly.newPlot('chart-div', chartData);
+    </script>
+{% endblock %}

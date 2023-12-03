@@ -1,0 +1,8 @@
+1. What problem is the product aimed at solving?
+Currency Exchange project is a web app in which users can request a pair of currencies exchange rates in a period. The website will show a line chart to show the rate change trend in the given period, and highest value, lowest value, and mathematical expectation value in this period. This project aims to help users to decide if they should exchange their money from one currency to another currency now or wait for a better exchange rate.
+
+2. Who is the product geared towards (targeted audience)?
+Targeted audience would be any individuals who have needs to exchange money to other currency and have flexibility for changing their money, such as international students, new immigrants.etc
+
+3. How is the product unique?
+This product not only provides clear and visualize display of historical data of given pairs of currency exchange rate, but also offers mathematical analysis for the data. This analysis includes trends, maximum values within a given period, minimum values within a given period, and mathematical expectation values. Users can customize the time period to gain insights into both the short-term and long-term trends.

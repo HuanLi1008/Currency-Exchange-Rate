@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    
+    <!-- <link rel="stylesheet" href="./static/style.css"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    {% block head %}
+    {% endblock %}
+</head>
+<body>
+    <header>
+        <h1>Welcome to Currency Exchange</h1>
+    </header>
+    <main>
+        
+        <div class="container" >
+            <form action="/submit" method="post">
+                <label for="currency-from">From:</label>
+                <select id="currency-from" name="currency-from">
+                    {% for i in currencies %}
+                        <option value={{i}}>{{currencies[i]}}</option>
+                    {% endfor %}
+                    
+                    
+                </select>
+
+                <label for="currency-to">To:</label>
+                <select id="currency-to" name="currency-to">
+                    {% for i in currencies %}
+                        <option value={{i}}>{{currencies[i]}}</option>
+                    {% endfor %}
+                </select>
+
+                <label for="period">Select a Period:</label>
+                <select id="period" name="period">
+                    <option value="7">One Week</option>
+                    <option value="14">Two Weeks</option>
+                    <option value="21">Three Weeks</option>
+                    <option value="30">One Month</option>
+                    <option value="60">Two Months</option>
+                    <option value="90">Three Months</option>
+                    <option value="183">Six Months</option>
+                    <option value="365">One Year</option>
+                    
+
+                </select>
+                <input type="submit" value="Get Exchange Rate Analysis">
+            </form>
+        </div>
+        <script>
+            
+            // var a = document.getElementById("currency-from").value;
+            // var b = document.getElementById("currency-to").value;
+            // if (a === b) {
+            //     alert("Please choose different currencies");
+            //     window.location.href = '/';
+            // } else {
+                
+            //     document.getElementById("myForm").submit();
+            // }
+        
+        </script>
+
+        {% block line_chart %}{% endblock %}
+    </main>
+</body>
+</html>
