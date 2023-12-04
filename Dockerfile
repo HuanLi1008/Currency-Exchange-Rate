@@ -18,10 +18,11 @@ WORKDIR /app
 
 COPY . /app
 # --no-cache-dir
-RUN pip install -r requirements.txt
-
+# RUN pip install -r requirements.txt
+RUN --mount=type=cache,target=/root/.cache/pip \
+    --mount=type=bind,source=requirements.txt,target=requirements.txt \
+    python -m pip install -r requirements.txt
 ENV FLASK_APP=app.py
-
 
 # Create a non-privileged user that the app will run under.
 # See https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#user
@@ -53,4 +54,7 @@ ENV FLASK_APP=app.py
 EXPOSE 5000
 
 # Run the application.
-CMD gunicorn 'app:app' --bind=0.0.0.0:5000
+#CMD gunicorn 'src.main:app' --bind=0.0.0.0:5000
+#ENV PYTHONPATH ./
+#CMD ["python", "./src/main/app.py"]
+CMD gunicorn 'src.main.app:create_app()' --bind=0.0.0.0:5000

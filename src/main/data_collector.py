@@ -79,9 +79,9 @@ def collect_data(base, target, period):
             curDate = traverse_time.strftime(time_format)
             traverse_time += timedelta(days=30)
             response = requests.get(api_url + curDate + ".." + traverse_time.strftime(time_format) + "?from=" +base + "&to=" + target).json()    
-        
-            for key, value in response["rates"].items():        
-                rates[key] = value[target]
+            if "rates" in response:
+                for key, value in response["rates"].items():        
+                    rates[key] = value[target]
         collection.insert_one({"base": base, "target": target, "start_date": start_time.strftime(time_format), "end_date": current.strftime(time_format), "rates": rates})
 
     #check data is stored in database
